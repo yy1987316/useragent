@@ -1,4 +1,4 @@
-# Go/Golang package for parsing user agent strings [![GoDoc](https://godoc.org/github.com/mileusna/useragent?status.svg)](https://godoc.org/github.com/mileusna/useragent)
+# Go/Golang package for parsing user agent strings [![GoDoc](https://godoc.org/github.com/yy1987316/useragent?status.svg)](https://godoc.org/github.com/yy1987316/useragent)
 
 Use `useragent.Parse(userAgent string)` function to parse browser's and bot's user agents strings and get:
 + User agent name and version (Chrome, Firefox, Googlebot, etc.)
@@ -15,7 +15,7 @@ Fill free to report an issue for any User-Agent string not recognized or misinte
 
 ## Installation <a id="installation"></a>
 ```
-go get github.com/mileusna/useragent
+go get github.com/yy1987316/useragent
 ```
 
 ## Example<a id="example"></a>
@@ -27,7 +27,7 @@ import (
     "fmt"
     "strings"
 
-    "github.com/mileusna/useragent"
+    "github.com/yy1987316/useragent"
 )
 
 func main() {
