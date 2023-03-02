@@ -5,12 +5,14 @@ import (
 	"strings"
 	"testing"
 
-	ua "github.com/mileusna/useragent"
+	ua "github.com/yy1987316/useragent"
 )
 
 var testTable = [][]string{
 	// useragent, name, version, mobile, os
 	// Mac
+	{"Mozilla/5.0 (Linux; Android 10; Pixel Build/QP1A.191005.007.A3; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36 Lark/5.32.0 LarkLocale/zh_CN ChannelName/Feishu LarkEnv/2_boecn TTWebView/0881130046408", ua.Chrome, "88.0.4324.181", "mobile", "Android", "5.32.0", "zh_CN"},
+	{"Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1 Lark/5.29.6 LarkLocale/vi_VN ChannelName/Lark LKBrowserIdentifier/03CCE092-A999-4CC4-8B77-A7CE1DD45B0C", ua.Safari, "16.2", "mobile", "iOS", "5.29.6", "vi_VN"},
 	{"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8", ua.Safari, "10.1.2", "desktop", "macOS"},
 	{"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36", ua.Chrome, "60.0.3112.90", "desktop", "macOS"},
 	{"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0", ua.Firefox, "54.0", "desktop", "macOS"},
@@ -135,6 +137,14 @@ func TestParse(t *testing.T) {
 
 		if len(test) > 4 && test[4] != ua.OS {
 			t.Error("\n", test[0], "OS should", test[4], "not", ua.OS)
+		}
+
+		if len(test) > 5 && test[5] != ua.LarkVersion {
+			t.Error("\n", test[0], "LarkVersion should", test[5], "not", ua.LarkVersion)
+		}
+
+		if len(test) > 6 && test[6] != ua.LarkLocale {
+			t.Error("\n", test[0], "LarkLocale should", test[5], "not", ua.LarkLocale)
 		}
 		//fmt.Println(ua.OS, ua.OSVersion, ua.Device)
 

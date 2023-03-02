@@ -8,17 +8,19 @@ import (
 
 // UserAgent struct containing all data extracted from parsed user-agent string
 type UserAgent struct {
-	Name      string
-	Version   string
-	OS        string
-	OSVersion string
-	Device    string
-	Mobile    bool
-	Tablet    bool
-	Desktop   bool
-	Bot       bool
-	URL       string
-	String    string
+	Name        string
+	Version     string
+	OS          string
+	OSVersion   string
+	Device      string
+	Mobile      bool
+	Tablet      bool
+	Desktop     bool
+	Bot         bool
+	URL         string
+	String      string
+	LarkVersion string
+	LarkLocale  string
 }
 
 var ignore = map[string]struct{}{
@@ -297,6 +299,9 @@ func Parse(userAgent string) UserAgent {
 			ua.Mobile = tokens.existsAny("Mobile", "Mobile Safari")
 		}
 	}
+
+	ua.LarkVersion = tokens.get("Lark")
+	ua.LarkLocale = tokens.get("LarkLocale")
 
 	// if tablet, switch mobile to off
 	if ua.Tablet {
